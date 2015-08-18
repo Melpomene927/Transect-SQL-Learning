@@ -303,6 +303,10 @@ SELECT Col_Length('PRODUCT','CATEGORYID')
 --================================================================================
 -- 取得登入帳號名稱
 SELECT SUSER_NAME()
+	  ,CURRENT_USER
+	  ,USER_ID()
+	  ,USER_NAME()  
+	  ,SCHEMA_NAME()
 
 --================================================================================
 -- 練習 : 其他函數
@@ -313,24 +317,6 @@ SELECT APP_NAME() AS [連線軟體]
 	  ,SYSTEM_USER AS [登入使用者]
 	  ,HOST_NAME() AS [主機名稱]
 
---================================================================================
--- 練習 : CONVERT (轉換資料型態)
--- 利用CONVERT將日期字串轉成日期格式, 數值轉成文字型態, 文字轉成整數型態
-SELECT CONVERT(DATETIME,'2010/11/9')
-	  ,CONVERT(VARCHAR(5),12345)
-	  ,CONVERT(INT,'12345')
-
--- 利用CONVERT將日期時間型態轉換成指定格式的字串, 傳入第三個參數決定格式字串, 
--- 忽略傳回預設格式. 格式12及112為ISO格式. 12不含世紀, 112包含.
-SELECT CONVERT(VARCHAR(30),GETDATE())
-	  ,CONVERT(VARCHAR(30),GETDATE(),12)
-	  ,CONVERT(VARCHAR(30),GETDATE(),112)
-
-
--- 練習 : CAST (轉換資料型態)
-SELECT CAST('2010/11/9' AS DATETIME)
-	  ,CAST(12345 AS VARCHAR(5))
-	  ,CAST('12345' AS INT)
 
 --================================================================================
 -- 練習 : NULLIF (兩個運算式 "相等" 傳回NULL, 否則傳回 [第一個運算式的值] )
@@ -401,12 +387,31 @@ SELECT '取得'+CAST(@@ROWCOUNT AS VARCHAR(10))+'筆資料.'
 DROP TABLE PRODUCT2
 SELECT * FROM PRODUCT2
 GO
-SELECT @@ERROR
+SELECT @@ERROR AS [Error Number]
 GO
+
 SELECT '影響'+@@ROWCOUNT+'筆資料.'
 GO
-SELECT @@ERROR
+SELECT @@ERROR AS [Error Number]
 GO
+--================================================================================
+-- 練習 : CONVERT (轉換資料型態)
+-- 利用CONVERT將日期字串轉成日期格式, 數值轉成文字型態, 文字轉成整數型態
+SELECT CONVERT(DATETIME,'2010/11/9')
+	  ,CONVERT(VARCHAR(5),12345)
+	  ,CONVERT(INT,'12345')
+
+-- 利用CONVERT將日期時間型態轉換成指定格式的字串, 傳入第三個參數決定格式字串, 
+-- 忽略傳回預設格式. 格式12及112為ISO格式. 12不含世紀, 112包含.
+SELECT CONVERT(VARCHAR(30),GETDATE())
+	  ,CONVERT(VARCHAR(30),GETDATE(),12)
+	  ,CONVERT(VARCHAR(30),GETDATE(),112)
+
+
+-- 練習 : CAST (轉換資料型態)
+SELECT CAST('2010/11/9' AS DATETIME)
+	  ,CAST(12345 AS VARCHAR(5))
+	  ,CAST('12345' AS INT)
 
 --================================================================================
 -- 練習 : ROW_NUMBER (指定資料 "輸出的順序" , 由1開始自動編號. 亦可指定群組, 分群後再產生序號)
@@ -424,13 +429,17 @@ SELECT CATEGORYID
 	  ,PRODUCTNAME
 	  ,ROW_NUMBER() OVER (PARTITION BY CATEGORYID ORDER BY DISCOUNT,PRODUCTNAME) AS SNO 
 FROM PRODUCT
-
 --================================================================================
--- 練習 : RANK (指定資料 "輸出的順序" , 由1開始自動編號, 遇到相同資料使用相同的序號, 
---		  下一筆資料以跳號取得. 亦可指定群組, 分群後再產生序號)
+-- 排序函數 (Ranking)
+--================================================================================
 
---		  DENSE_RANK (指定資料 "輸出的順序" , 由1開始自動編號, 遇到相同資料使用相同的序號,
---		  下一筆資料以連號取得. 亦可指定群組, 分群後再產生序號)
+-- RANK() 
+-- (指定資料 "輸出的順序" , 由1開始自動編號, 遇到 "相同資料" 使用 "相同的序號", 
+-- 下一筆資料以 "跳號" 取得. 亦可指定群組, 分群後再產生序號)
+
+-- DENSE_RANK() --> densely
+-- (指定資料 "輸出的順序" , 由1開始自動編號, 遇到 "相同資料" 使用 "相同的序號",
+-- 下一筆資料以 "連號" 取得. 亦可指定群組, 分群後再產生序號)
 
 -- 將產品資料表依折扣數排序自動產生低折扣數的排名
 
@@ -449,15 +458,20 @@ SELECT CATEGORYID
 	  ,DENSE_RANK() OVER (PARTITION BY CATEGORYID ORDER BY DISCOUNT) AS [SNO USING DENSE_RANK]  
 FROM PRODUCT
 
---================================================================================
--- 練習 : NTILE (指定資料輸出的順序, 參數將指定資料分成多少群組, 將資料列平均分配到群組中)
+-- NTILE()
+-- (指定資料 "輸出的順序" , 參數將指定資料 "分成多少群組", 將資料列 "平均分配" 到群組中)
+
 -- 依產品編號排序, 將產品均分為3個群組
-SELECT PRODUCTID,PRODUCTNAME,
-NTILE(3) OVER (ORDER BY PRODUCTID) [SNO]
+SELECT PRODUCTID
+	  ,PRODUCTNAME
+	  ,NTILE(3) OVER (ORDER BY PRODUCTID) AS [SNO]
 FROM PRODUCT
+
 -- 依產品價格排序, 將產品均分為3個群組
-SELECT PRICE,PRODUCTID,PRODUCTNAME,
-NTILE(3) OVER (ORDER BY PRICE) [SNO]
+SELECT PRICE
+	  ,PRODUCTID
+	  ,PRODUCTNAME
+	  ,NTILE(3) OVER (ORDER BY PRICE) AS [SNO]
 FROM PRODUCT
 
 --================================================================================
@@ -467,65 +481,123 @@ FROM PRODUCT
 -- 練習 : ASCII (傳回字元左側的ASCII CODE)
 SELECT ASCII('Z'),ASCII('A'),ASCII('XYZ'),ASCII('xyz')
 
+
 -- 練習 : CHAR (傳回ASCII CODE字元)
 SELECT CHAR(65),CHAR(97)
 
--- 練習 : UNICODE (傳回字元在UNICODE CODE中的定義整數值)
-SELECT UNICODE('A'),UNICODE('一'),UNICODE(N'一'),UNICODE('栢'),UNICODE(N'栢')
-,UNICODE('堃'),UNICODE(N'堃')
 
--- 練習 : NCHAR (傳回UNICODE CODE字元)
-SELECT NCHAR(65),NCHAR(97),NCHAR(21894)
+-- 練習 : UNICODE
+-- (傳回字元在UNICODE CODE中的定義整數值)
+SELECT UNICODE('A')		--en charactor: ASCII
+	  ,UNICODE('一')		--special symbel: UNICODE
+	  ,UNICODE(N'一')
+	  ,UNICODE('栢')		--
+	  ,UNICODE(N'栢')
+	  ,UNICODE('堃')
+	  ,UNICODE(N'堃')
 
--- 練習 : CHARINDEX (回傳指定字串的起始位置)
-SELECT PRODUCTNAME,CHARINDEX('入門',PRODUCTNAME,1) FROM PRODUCT 
-SELECT PRODUCTNAME,CHARINDEX('S',PRODUCTNAME,1),
-CHARINDEX('S',PRODUCTNAME,CHARINDEX('S',PRODUCTNAME,1)+1) FROM PRODUCT 
 
--- 練習 : PATINDEX (回傳指定運算式中的模式第一次出現的起始位置, 可搭配萬用字元使用)
-SELECT PRODUCTNAME,PATINDEX('%入門%',PRODUCTNAME) FROM PRODUCT 
-SELECT PRODUCTNAME,PATINDEX('%A%S%',PRODUCTNAME),PATINDEX('%A__S%',PRODUCTNAME) FROM PRODUCT 
+-- 練習 : NCHAR 
+-- (傳回 UNICODE CODE 字元)
+SELECT NCHAR(65)
+	  ,NCHAR(97)
+	  ,NCHAR(21894)
+	  ,NCHAR(63)
 
--- 練習 : LEFT (由左邊取得指定位元數的字串)
---		  RIGHT (由右邊取得指定位元數的字串)
-SELECT PRODUCTNAME,LEFT(PRODUCTNAME,4),RIGHT(PRODUCTNAME,4) FROM PRODUCT 
 
--- 練習 : LEN (傳回字串的字元數)
-SELECT PRODUCTNAME,LEN(PRODUCTNAME) FROM PRODUCT 
+-- 練習 : CHARINDEX 
+-- (回傳指定字串的 "起始位置" )
+SELECT PRODUCTNAME
+	  ,CHARINDEX('入門',PRODUCTNAME,1) 
+FROM PRODUCT 
+
+SELECT PRODUCTNAME
+	  ,CHARINDEX('S', PRODUCTNAME, 1)
+	  ,CHARINDEX('S', PRODUCTNAME, CHARINDEX('S',PRODUCTNAME,1)+1) --下一個'S'
+FROM PRODUCT 
+
+
+-- 練習 : PATINDEX --> pattern index
+-- (回傳指定運算式中的模式第一次出現的起始位置, 可搭配萬用字元使用)
+
+SELECT PRODUCTNAME
+	  ,PATINDEX('%入門%', PRODUCTNAME) 
+FROM PRODUCT 
+
+SELECT PRODUCTNAME
+	  ,PATINDEX('%A%S%',  PRODUCTNAME)
+	  ,PATINDEX('%A__S%', PRODUCTNAME) 
+FROM PRODUCT 
+
+
+-- 練習 : LEFT (由 "左邊取得" 指定位元數的字串)
+--		  RIGHT (由 "右邊取得"指定位元數的字串)
+SELECT PRODUCTNAME
+	  ,LEFT(PRODUCTNAME,4)
+	  ,RIGHT(PRODUCTNAME,4)
+FROM PRODUCT 
+
+-- 練習 : LEN (傳回字串的 "字元數")
+SELECT PRODUCTNAME
+	  ,LEN(PRODUCTNAME)
+FROM PRODUCT 
 
 -- 練習 : LOWER (字串轉小寫)
 --		  UPPER (字串轉大寫)
-SELECT PRODUCTNAME,LOWER(PRODUCTNAME),UPPER(PRODUCTNAME) FROM PRODUCT 
+SELECT PRODUCTNAME
+	  ,LOWER(PRODUCTNAME)
+	  ,UPPER(PRODUCTNAME)
+FROM PRODUCT 
 
 -- 練習 : LTRIM (從左邊移除空白字元)
 --		  RTRIM (從右邊移除空白字元)
 --		  REVERSE (反轉字串順序)
-SELECT LTRIM('    123 ABC    ')+'''',RTRIM('    123 ABC    ')+'''',REVERSE('123 ABC')
+SELECT LTRIM('    123 ABC    ')+''''
+	  ,RTRIM('    123 ABC    ')+''''
+	  ,REVERSE('123 ABC')
 
 -- 練習 : REPLACE (利用新字串取代指定字串)
-SELECT REPLACE('123 456 789',' ',',')
+SELECT REPLACE('123 456 789', ' ', 'x')
 
---	練習 : STUFF (從指定位置刪除指定長度的字串, 並加入指定字串)
-SELECT STUFF('123456789',4,3,'ABCD')
+--	練習 : STUFF (從 "指定位置" 刪除 "指定長度" 的字串, 並 "加入指定字串")
+SELECT STUFF('123456789', 4, 3, 'ABCD') --位置4開始刪除3個字元並插入'ABCD'
 
--- 練習 : REPLICATE (重覆顯示指定次數的字元)
---		  SPACE (回傳指定次數的空白字元)
-SELECT PRODUCTNAME,CAST(QTY AS VARCHAR(15))+REPLICATE('-',10)+UNIT FROM PRODUCT 
-SELECT PRODUCTNAME,CAST(QTY AS VARCHAR(15))+REPLICATE(SPACE(1),10)+UNIT FROM PRODUCT 
-SELECT PRODUCTNAME,CAST(QTY AS VARCHAR(15))+SPACE(10)+UNIT FROM PRODUCT 
+-- 練習 : REPLICATE ("重覆顯示" "指定次數" 的字元)
+--		  SPACE (回傳 "指定次數" 的空白字元)
+SELECT PRODUCTNAME, CAST(QTY AS VARCHAR(15))+REPLICATE('-',10)+UNIT FROM PRODUCT ;
+SELECT PRODUCTNAME, CAST(QTY AS VARCHAR(15))+REPLICATE(SPACE(1),10)+UNIT FROM PRODUCT ;
+SELECT PRODUCTNAME, CAST(QTY AS VARCHAR(15))+SPACE(10)+UNIT FROM PRODUCT ;
 
--- 練習 : STR (將數值轉換成字串, 忽略長度時預設值為10, 忽略小數位時預設值為0)
-SELECT STR(123.45);
-SELECT STR(123.45,5,1)
+-- 練習 : STR (將數值轉換成字串, 忽略長度時預設值為10, "忽略小數位"時預設值為0)
+
+SELECT STR(123.45)
 UNION ALL
-SELECT STR(123.45,6,1)
+SELECT STR(12345)
 UNION ALL
-SELECT STR(123.45,7,1)
+SELECT STR(1234567)
 UNION ALL
-SELECT STR(123.45,8,1)
+SELECT STR(123456789)
 UNION ALL
-SELECT STR(123.45,9,1);
-SELECT STR(123.45,7,4); -- 長度不夠時, 會截斷小數位數
-SELECT STR(123.45,2,4); -- 長度小於整數長度時, 回傳值為**
--- 練習 : SUBSTRING (回傳指定位置指定長度的字串)
-SELECT PRODUCTNAME,SUBSTRING(PRODUCTNAME,8,1),SUBSTRING(PRODUCTNAME,8,10) FROM PRODUCT
+SELECT STR(1234567890)
+UNION ALL
+SELECT STR(12345678901)  --超過預設長度10,顯示*
+
+--      預設字串長度↓  ↓不忽略小數
+SELECT STR(123.45, 5, 1)
+UNION ALL
+SELECT STR(123.45, 6, 1)
+UNION ALL
+SELECT STR(123.45, 7, 1)
+UNION ALL
+SELECT STR(123.45, 8, 1)
+UNION ALL
+SELECT STR(123.45, 9, 1);
+
+SELECT STR(123.45, 7, 4); -- 長度不夠時, 會截斷小數位數
+SELECT STR(123.45, 2, 4); -- 長度小於整數長度時, 回傳值為**
+
+-- 練習 : SUBSTRING (回傳 "指定位置" "指定長度" 的字串)
+SELECT PRODUCTNAME
+	  ,SUBSTRING(PRODUCTNAME, 8, 1)
+	  ,SUBSTRING(PRODUCTNAME, 8, 10)
+FROM PRODUCT
