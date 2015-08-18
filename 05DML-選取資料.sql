@@ -1,0 +1,57 @@
+﻿-- 切換資料庫
+USE TSQL_PRACTICE
+GO
+
+-- 練習 : SELECT INTO
+-- 將產品資料表中的產品代號和產品名稱欄位資料匯出至 PRODUCT2 資料表
+SELECT PRODUCTID,PRODUCTNAME INTO PRODUCT2 FROM PRODUCT
+-- 選取 PRODUCT2 資料表資料
+SELECT * FROM PRODUCT2
+-- 刪除 PRODUCT2 資料表
+DROP TABLE PRODUCT2
+
+-- 練習 : ORDER BY子句
+-- 依產品售價遞增排序, 有相同售價再依產品名稱遞增排序
+SELECT * FROM PRODUCT ORDER BY PRICE,PRODUCTNAME
+-- 依產品售價遞減排序, 有相同售價再依產品名稱遞增排序
+SELECT * FROM PRODUCT ORDER BY PRICE DESC,PRODUCTNAME
+
+-- 練習 : TOP子句
+-- 使用 WITH TIES 可列出與最一筆資料值相同者
+-- 練習 : TOP N (帶出前幾筆資料)
+-- 找出折扣最低的前 3 筆產品
+SELECT TOP 3 * FROM PRODUCT ORDER BY DISCOUNT
+-- 找出折扣最低的前 3 筆產品, 並列出所有與第 3 筆有相同折扣的產品
+SELECT TOP 3 WITH TIES * FROM PRODUCT ORDER BY DISCOUNT
+-- 練習 : TOP N PERCENT (帶出前N%的資料列)
+-- 找出折扣最低的前 10% 產品
+SELECT TOP 10 PERCENT * FROM PRODUCT ORDER BY DISCOUNT
+-- 找出折扣最低的前 10% 的產品, 並列出所有與最後一筆資料有相同折扣的產品
+SELECT TOP 10 PERCENT WITH TIES * FROM PRODUCT ORDER BY DISCOUNT
+
+-- 練習 : DISTINCT關鍵字
+-- 找出所有產品單位
+SELECT DISTINCT UNIT FROM PRODUCT
+-- 找出所有產品類別的所有扣扣率
+SELECT DISTINCT CATEGORYID,DISCOUNT FROM PRODUCT
+
+-- 練習 : GROUP BY子句 + 彙總函數
+-- 找出所有產品類別的產品總數
+SELECT CATEGORYID,COUNT(*) FROM PRODUCT 
+GROUP BY CATEGORYID
+-- 依產品類別找出最小折扣率, 最大折扣率, 庫存成本及平均單價
+SELECT CATEGORYID,MIN(DISCOUNT) 最小折扣,MAX(DISCOUNT) 最大折扣,
+SUM(PRICE*QTY) 庫存成本,AVG(PRICE) 平均單價
+FROM PRODUCT 
+GROUP BY CATEGORYID
+-- 取得所有產品總筆數, 最小折扣率, 最大折扣率, 庫存成本及平均單價
+SELECT COUNT(*) 總筆數,MIN(DISCOUNT) 最小折扣,MAX(DISCOUNT) 最大折扣,
+SUM(PRICE*QTY) 庫存成本,AVG(PRICE) 平均單價
+FROM PRODUCT 
+
+-- 練習 : HAVING子句
+-- 取得產品折扣率大於 8 折的產品類別和平均單價, 且產品類別平均單價小於 5000
+SELECT CATEGORYID,AVG(PRICE) FROM PRODUCT
+WHERE DISCOUNT>8
+GROUP BY CATEGORYID
+HAVING AVG(PRICE) < 5000
