@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TSQL_Practice">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="DEV0417-PC\SQL2012:sa">
+          <Created>2015-08-19T12:04:25.3069107+08:00</Created>
+          <Type>SQL</Type>
+          <Server>DEV0417-PC\SQL2012</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>TSQL_PRACTICE</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="01SQL語法.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>01SQL語法.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02DDL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>02DDL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03Before運算子.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>03Before運算子.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03運算子.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>03運算子.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04運算式.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>04運算式.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05DML-選取資料.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>05DML-選取資料.sql</FullPath>
+        </FileNode>
+        <FileNode Name="06內建函數.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>06內建函數.sql</FullPath>
+        </FileNode>
+        <FileNode Name="07DML-維修資料.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>07DML-維修資料.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08before連結.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>08before連結.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08連結.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>08連結.sql</FullPath>
+        </FileNode>
+        <FileNode Name="09子查詢及相關子查詢.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>09子查詢及相關子查詢.sql</FullPath>
+        </FileNode>
+        <FileNode Name="10衍生資料表.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>10衍生資料表.sql</FullPath>
+        </FileNode>
+        <FileNode Name="11批次及流程控制.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>11批次及流程控制.sql</FullPath>
+        </FileNode>
+        <FileNode Name="12子查詢的替代方案.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>12子查詢的替代方案.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13Before檢視表.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>13Before檢視表.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13檢視表.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>13檢視表.sql</FullPath>
+        </FileNode>
+        <FileNode Name="14預存程序.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>14預存程序.sql</FullPath>
+        </FileNode>
+        <FileNode Name="15使用者自訂函數.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>15使用者自訂函數.sql</FullPath>
+        </FileNode>
+        <FileNode Name="16Before觸發程序.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>16Before觸發程序.sql</FullPath>
+        </FileNode>
+        <FileNode Name="16觸發程序.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>16觸發程序.sql</FullPath>
+        </FileNode>
+        <FileNode Name="practice_mike.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>practice_mike.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

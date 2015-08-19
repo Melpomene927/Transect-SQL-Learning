@@ -2,6 +2,7 @@
 USE TSQL_PRACTICE
 GO
 
+--================================================================================
 -- 建立I1表格新增資料時的觸發程序
 -- 當新增一筆I1表格資料時, 會自動寫一筆資料到I2表格
 IF OBJECT_ID (N'dbo.trg_I1Insert', N'TR') IS NOT NULL
@@ -11,12 +12,12 @@ CREATE TRIGGER dbo.trg_I1Insert
 ON dbo.I1 
 AFTER INSERT
 AS
-DECLARE @I101 NUMERIC(25,0)
-DECLARE @I102 NVARCHAR(50)
-DECLARE @I103 NUMERIC(25,4)
-SELECT @I101=I101,@I102=I102,@I103=I103 FROM INSERTED
-INSERT INTO I2 VALUES ('ADD',@I101,@I102,@I103)
---INSERT INTO I2 SELECT 'ADD',I101,I102,I103 FROM INSERTED
+	DECLARE @I101 NUMERIC(25,0)
+	DECLARE @I102 NVARCHAR(50)
+	DECLARE @I103 NUMERIC(25,4)
+	SELECT @I101=I101,@I102=I102,@I103=I103 FROM INSERTED
+	INSERT INTO I2 VALUES ('ADD',@I101,@I102,@I103)
+	--INSERT INTO I2 SELECT 'ADD',I101,I102,I103 FROM INSERTED
 GO
 
 -- 執行1 : 新增資料到I1資料表
@@ -94,3 +95,34 @@ DELETE FROM I1 WHERE I101=5
 SELECT * FROM I1
 SELECT * FROM I2
 GO
+
+
+
+
+-- Other example
+CREATE TRIGGER [dbo].[trCustomers_UPDATE_INSERT_DELETE] ON [dbo].[Customers] AFTER UPDATE,INSERT,DELETE
+AS
+BEGIN    
+	DECLARE @record XML   
+	DECLARE @IsType TINYINT
+	SET @IsType=''
+	IF EXISTS(SELECT 1 FROM inserted) AND NOT EXISTS(SELECT 1 FROM deleted)
+		SET @IsType = 1    --Insert
+  
+	IF EXISTS(SELECT 1 FROM inserted) AND EXISTS(SELECT 1 FROM deleted)
+		SET @IsType = 2    --Update
+ 
+	IF NOT EXISTS(SELECT 1 FROM inserted) AND EXISTS(SELECT 1 FROM deleted)
+		SET @IsType = 3    --Delete
+     
+	--只想記錄 UPDATE 事件更新資料前的舊資料
+	IF (@IsType = 1)    
+		SET @record=(SELECT * FROM inserted FOR XML RAW('Customers'), ELEMENTS,ROOT)
+	ELSE
+		SET @record=(SELECT * FROM deleted FOR XML RAW('Customers'), ELEMENTS,ROOT)
+ 
+	IF (@IsType <>'')
+	BEGIN
+		INSERT INTO [log]([dbname],[recoder],[istype])VALUES('Customers',@record  ,@IsType) 
+	END
+END
