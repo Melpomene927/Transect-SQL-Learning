@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# SQL Server Management Studio Solution File, Format Version 11.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "TSQL-Exam", "TSQL-Exam\TSQL-Exam.ssmssqlproj", "{3D5E6EEC-28FB-4AB2-8554-48FAC686CECC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D5E6EEC-28FB-4AB2-8554-48FAC686CECC}.Default|Default.ActiveCfg = Default
+		{003C8D10-DB59-406A-B166-B95ECDA8E7E7}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

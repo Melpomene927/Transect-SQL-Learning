@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TSQL-Exam">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="DEV0417-PC\SQL2012:GOLDENUP\Mike_chang">
+          <Created>2015-08-19T10:19:33.1833562+08:00</Created>
+          <Type>SQL</Type>
+          <Server>DEV0417-PC\SQL2012</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>TSQL_Exam</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="01CreateDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>01CreateDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02CreateTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>02CreateTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03InsertTablesData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>03InsertTablesData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04CreateSP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>04CreateSP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05CreateTrigger.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>05CreateTrigger.sql</FullPath>
+        </FileNode>
+        <FileNode Name="06InertOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>06InertOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="07UpdateOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>07UpdateOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08DeleteOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>08DeleteOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="09SelectOrdersLog.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>09SelectOrdersLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="10EmployeeManager.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>10EmployeeManager.sql</FullPath>
+        </FileNode>
+        <FileNode Name="11CustOrderSum.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>11CustOrderSum.sql</FullPath>
+        </FileNode>
+        <FileNode Name="12NegativeStock.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>12NegativeStock.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13SalesOrdersRank.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>13SalesOrdersRank.sql</FullPath>
+        </FileNode>
+        <FileNode Name="14RemoveOrdersDuplicate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DEV0417-PC\SQL2012:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DEV0417-PC\SQL2012</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>14RemoveOrdersDuplicate.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="insertCOMPANY.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertCOMPANY.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertCS.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertCS.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertDEPARTMENT.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertDEPARTMENT.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertEMPLOYEE.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertEMPLOYEE.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertOrder.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertOrder.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertPRODUCT.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertPRODUCT.csv</FullPath>
+        </FileNode>
+        <FileNode Name="insertPRODUCTCATEGORY.csv">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>insertPRODUCTCATEGORY.csv</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

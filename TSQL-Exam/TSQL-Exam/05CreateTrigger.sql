@@ -1,0 +1,170 @@
+USE TSQL_Exam
+GO
+
+---------------------------------------------------------------
+-- Create Trigger trg_LogOrders_Insert After Insert
+---------------------------------------------------------------
+IF OBJECT_ID (N'dbo.trg_LogOrders_Insert', N'TR') IS NOT NULL
+   DROP TRIGGER dbo.trg_LogOrders_Insert
+GO
+CREATE TRIGGER dbo.trg_LogOrders_Insert
+ON [dbo].[ORDERS]
+AFTER INSERT
+AS
+	DECLARE @COMPID		nvarchar(2)
+	DECLARE @ORDERNO	nvarchar(10)
+	DECLARE @SNO		numeric(25,4)
+	DECLARE @ORDERDATE	nvarchar(8)
+	DECLARE @CUSTID		nvarchar(10)
+	DECLARE @PRODID		nvarchar(10)
+	DECLARE @QTY		numeric(25,4)
+	DECLARE @UPRICE		numeric(25,4)
+	DECLARE @AMOUNT		numeric(25,4)
+
+	-- TAKE VALUES FROM INSERT
+	SELECT @COMPID	= [COMPID]
+		  ,@ORDERNO = [ORDERNO]
+		  ,@SNO		= [SNO]
+		  ,@ORDERDATE = [ORDERDATE]
+		  ,@CUSTID	= [CUSTID]
+		  ,@PRODID	= [PRODID]
+		  ,@QTY		= [QTY]
+		  ,@UPRICE	= [UPRICE]
+		  ,@AMOUNT	= [AMOUNT]
+	FROM INSERTED
+
+	-- INSERT RECORD OF INSERT OPERATION
+	INSERT INTO [dbo].[ORDERS_LOG](
+		[TRANSDATE], [TRANSTIME], [TRANSWS], [TRANSUSER], [TRANSTYPE], 
+		[COMPID], [ORDERNO], [SNO], [DATE], [CUSTID], [PRODID], [QTY], [UPRICE], [AMOUNT]
+	)VALUES(
+		STR(DATEPART(YY,GETDATE()),4,0) + RIGHT(DATEPART(MM,GETDATE())+100,2) + RIGHT(DATEPART(DD,GETDATE())+100,2),
+		RIGHT(DATEPART(HH,GETDATE())+100,2)+ RIGHT(DATEPART(MI,GETDATE())+100,2)+RIGHT(DATEPART(SS,GETDATE())+100,2)+RIGHT(DATEPART(MS,GETDATE())+1000,3),
+		HOST_NAME(),
+		SUSER_NAME(),
+		N'A',
+		@COMPID, @ORDERNO, @SNO, @ORDERDATE, @CUSTID, @PRODID, @QTY, @UPRICE, @AMOUNT
+	)
+
+GO
+
+
+---------------------------------------------------------------
+-- Create Trigger trg_LogOrders_Update After UPDATE
+---------------------------------------------------------------
+IF OBJECT_ID (N'dbo.trg_LogOrders_Update', N'TR') IS NOT NULL
+   DROP TRIGGER dbo.trg_LogOrders_Update
+GO
+CREATE TRIGGER dbo.trg_LogOrders_Update
+ON [dbo].[ORDERS]
+AFTER UPDATE
+AS
+	DECLARE @COMPID		nvarchar(2)
+	DECLARE @ORDERNO	nvarchar(10)
+	DECLARE @SNO		numeric(25,4)
+	DECLARE @ORDERDATE	nvarchar(8)
+	DECLARE @CUSTID		nvarchar(10)
+	DECLARE @PRODID		nvarchar(10)
+	DECLARE @QTY		numeric(25,4)
+	DECLARE @UPRICE		numeric(25,4)
+	DECLARE @AMOUNT		numeric(25,4)
+
+	-- TAKE VALUES FROM DELETE
+	SELECT @COMPID	= [COMPID]
+		  ,@ORDERNO = [ORDERNO]
+		  ,@SNO		= [SNO]
+		  ,@ORDERDATE = [ORDERDATE]
+		  ,@CUSTID	= [CUSTID]
+		  ,@PRODID	= [PRODID]
+		  ,@QTY		= [QTY]
+		  ,@UPRICE	= [UPRICE]
+		  ,@AMOUNT	= [AMOUNT]
+	FROM deleted 
+
+	-- INSERT RECORD OF DELETE OPERATION
+	INSERT INTO [dbo].[ORDERS_LOG](
+		[TRANSDATE], [TRANSTIME], [TRANSWS], [TRANSUSER], [TRANSTYPE], 
+		[COMPID], [ORDERNO], [SNO], [DATE], [CUSTID], [PRODID], [QTY], [UPRICE], [AMOUNT]
+	)VALUES(
+		STR(DATEPART(YY,GETDATE()),4,0) + RIGHT(DATEPART(MM,GETDATE())+100,2) + RIGHT(DATEPART(DD,GETDATE())+100,2),
+		RIGHT(DATEPART(HH,GETDATE())+100,2)+ RIGHT(DATEPART(MI,GETDATE())+100,2)+RIGHT(DATEPART(SS,GETDATE())+100,2)+RIGHT(DATEPART(MS,GETDATE())+1000,3),
+		HOST_NAME(),
+		SUSER_NAME(),
+		N'D',
+		@COMPID, @ORDERNO, @SNO, @ORDERDATE, @CUSTID, @PRODID, @QTY, @UPRICE, @AMOUNT
+	)
+
+
+	-- TAKE VALUES FROM INSERT
+	SELECT @COMPID	= [COMPID]
+		  ,@ORDERNO = [ORDERNO]
+		  ,@SNO		= [SNO]
+		  ,@ORDERDATE = [ORDERDATE]
+		  ,@CUSTID	= [CUSTID]
+		  ,@PRODID	= [PRODID]
+		  ,@QTY		= [QTY]
+		  ,@UPRICE	= [UPRICE]
+		  ,@AMOUNT	= [AMOUNT]
+	FROM inserted  
+
+	-- INSERT RECORD OF INSERT OPERATION
+	INSERT INTO [dbo].[ORDERS_LOG](
+		[TRANSDATE], [TRANSTIME], [TRANSWS], [TRANSUSER], [TRANSTYPE], 
+		[COMPID], [ORDERNO], [SNO], [DATE], [CUSTID], [PRODID], [QTY], [UPRICE], [AMOUNT]
+	)VALUES(
+		STR(DATEPART(YY,GETDATE()),4,0) + RIGHT(DATEPART(MM,GETDATE())+100,2) + RIGHT(DATEPART(DD,GETDATE())+100,2),
+		RIGHT(DATEPART(HH,GETDATE())+100,2)+ RIGHT(DATEPART(MI,GETDATE())+100,2)+RIGHT(DATEPART(SS,GETDATE())+100,2)+RIGHT(DATEPART(MS,GETDATE())+1000,3),
+		HOST_NAME(),
+		SUSER_NAME(),
+		N'A',
+		@COMPID, @ORDERNO, @SNO, @ORDERDATE, @CUSTID, @PRODID, @QTY, @UPRICE, @AMOUNT
+	)
+GO
+
+
+---------------------------------------------------------------
+-- Create Trigger trg_LogOrders_Delete After DELETE
+---------------------------------------------------------------
+IF OBJECT_ID (N'dbo.trg_LogOrders_Delete', N'TR') IS NOT NULL
+   DROP TRIGGER dbo.trg_LogOrders_Delete
+GO
+CREATE TRIGGER dbo.trg_LogOrders_Delete
+ON [dbo].[ORDERS]
+AFTER DELETE
+AS
+	DECLARE @COMPID		nvarchar(2)
+	DECLARE @ORDERNO	nvarchar(10)
+	DECLARE @SNO		numeric(25,4)
+	DECLARE @ORDERDATE	nvarchar(8)
+	DECLARE @CUSTID		nvarchar(10)
+	DECLARE @PRODID		nvarchar(10)
+	DECLARE @QTY		numeric(25,4)
+	DECLARE @UPRICE		numeric(25,4)
+	DECLARE @AMOUNT		numeric(25,4)
+
+	-- TAKE VALUES FROM DELETE
+	SELECT @COMPID	= [COMPID]
+		  ,@ORDERNO = [ORDERNO]
+		  ,@SNO		= [SNO]
+		  ,@ORDERDATE = [ORDERDATE]
+		  ,@CUSTID	= [CUSTID]
+		  ,@PRODID	= [PRODID]
+		  ,@QTY		= [QTY]
+		  ,@UPRICE	= [UPRICE]
+		  ,@AMOUNT	= [AMOUNT]
+	FROM deleted 
+
+	-- INSERT RECORD OF DELETE OPERATION
+	INSERT INTO [dbo].[ORDERS_LOG](
+		[TRANSDATE], [TRANSTIME], [TRANSWS], [TRANSUSER], [TRANSTYPE], 
+		[COMPID], [ORDERNO], [SNO], [DATE], [CUSTID], [PRODID], [QTY], [UPRICE], [AMOUNT]
+	)VALUES(
+		STR(DATEPART(YY,GETDATE()),4,0) + RIGHT(DATEPART(MM,GETDATE())+100,2) + RIGHT(DATEPART(DD,GETDATE())+100,2),
+		RIGHT(DATEPART(HH,GETDATE())+100,2)+ RIGHT(DATEPART(MI,GETDATE())+100,2)+RIGHT(DATEPART(SS,GETDATE())+100,2)+RIGHT(DATEPART(MS,GETDATE())+1000,3),
+		HOST_NAME(),
+		SUSER_NAME(),
+		N'D',
+		@COMPID, @ORDERNO, @SNO, @ORDERDATE, @CUSTID, @PRODID, @QTY, @UPRICE, @AMOUNT
+	)
+
+GO
