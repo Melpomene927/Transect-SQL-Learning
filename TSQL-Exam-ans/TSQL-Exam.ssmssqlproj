@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TSQL-Exam">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="(local)\SQL2014:RD02-NB\jennifer">
+          <Created>2015-08-17T02:14:04.6651537+08:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)\SQL2014</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>master</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+        <ConnectionNode Name="RD02-NB\SQL2014:RD02-NB\jennifer">
+          <Created>2015-08-17T02:28:08.8704159+08:00</Created>
+          <Type>SQL</Type>
+          <Server>RD02-NB\SQL2014</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>TSQL_Exam</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="01CreateDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>01CreateDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="02CreateTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>02CreateTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="03InsertTablesData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>03InsertTablesData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="04CreateSP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>04CreateSP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="05CreateTrigger.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>05CreateTrigger.sql</FullPath>
+        </FileNode>
+        <FileNode Name="06InertOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>06InertOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="07UpdateOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>07UpdateOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="08DeleteOrders.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>08DeleteOrders.sql</FullPath>
+        </FileNode>
+        <FileNode Name="09SelectOrdersLog.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>09SelectOrdersLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="10EmployeeManager.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>10EmployeeManager.sql</FullPath>
+        </FileNode>
+        <FileNode Name="11CustOrderSum.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>11CustOrderSum.sql</FullPath>
+        </FileNode>
+        <FileNode Name="12NegativeStock.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>12NegativeStock.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13SalesOrdersRank.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>13SalesOrdersRank.sql</FullPath>
+        </FileNode>
+        <FileNode Name="14RemoveOrdersDuplicate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:RD02-NB\SQL2014:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>RD02-NB\SQL2014</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>14RemoveOrdersDuplicate.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

@@ -401,11 +401,12 @@ SELECT CONVERT(DATETIME,'2010/11/9')
 	  ,CONVERT(VARCHAR(5),12345)
 	  ,CONVERT(INT,'12345')
 
--- 利用CONVERT將日期時間型態轉換成指定格式的字串, 傳入第三個參數決定格式字串, 
--- 忽略傳回預設格式. 格式12及112為ISO格式. 12不含世紀, 112包含.
+-- 利用CONVERT將 "日期時間型態轉" 換成 "指定格式" 的字串, 傳入第三個參數決定格式字串, 
+-- 忽略傳回預設格式. 格式12及112為ISO格式. 12不含世紀, 112包含, 114取時間
 SELECT CONVERT(VARCHAR(30),GETDATE())
 	  ,CONVERT(VARCHAR(30),GETDATE(),12)
 	  ,CONVERT(VARCHAR(30),GETDATE(),112)
+	  ,CONVERT(VARCHAR(30),GETDATE(),114)
 
 
 -- 練習 : CAST (轉換資料型態)
